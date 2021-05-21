@@ -1,16 +1,17 @@
 /*----------------------------------------------------------------\
 @ Numerical Methods by Young-Keun Kim - Handong Global University
 
-Author           : [YOUR NAME]
-Created          : 26-03-2018
-Modified         : 18-03-2021
+Author           : 21600336 ¹é½ÂÈÆ
+Modified         : 15-05-2021
 Language/ver     : C++ in MSVS2019
 
 Description      : myMatrix.cpp
 ----------------------------------------------------------------*/
 
 #include "myMatrix.h"
-
+#include "myNM.h"
+#include <stdio.h>
+#include <math.h> 
 
 // Create Matrix with specified size
 Matrix	createMat(int _rows, int _cols)
@@ -95,7 +96,6 @@ void	printMat(Matrix _A, const char* _name)
 	printf("\n");
 }
 
-
 // initialization of Matrix elements
 void	initMat(Matrix _A, double _val)
 {
@@ -109,6 +109,66 @@ Matrix	zeros(int _rows, int _cols)
 {
 	Matrix Out = createMat(_rows, _cols);
 	initMat(Out, 0);
-
 	return Out;
+}
+
+Matrix eye(int _rows, int _cols)
+{
+	Matrix out = createMat(_rows, _cols);
+	for (int i = 0; i < _rows; i++) {
+		for (int j = 0; j < _cols; j++) {
+			if (i == j)
+				out.at[i][j] = 1;
+			else
+				out.at[i][j] = 0;
+		}
+	}
+	return out;
+}
+
+void	copyMat(Matrix _A, Matrix out)
+{
+	for (int x = 0; x < _A.rows; x++) {
+		for (int y = 0; y < _A.cols; y++)
+			out.at[x][y] = _A.at[x][y];
+	}
+
+}
+
+double norm(Matrix _vec) {
+    int n = _vec.rows;;
+    double out = 0; 
+    for (int i =0; i < n; i++) {
+        out +=  _vec.at[i][0]* _vec.at[i][0];
+    }
+    out = sqrt(out);
+    return out; 
+}
+
+Matrix	transpose(Matrix _A) {
+    int r = _A.rows;
+    int c = _A.cols;
+   
+    double exchang = 0 ;
+    Matrix out = zeros(c, r);
+    for (int i = 0; i < c; i++) {
+        for (int j = 0; j < r; j++) {
+            if (i == j)
+                out.at[i][j] = _A.at[i][j];
+            else {
+                out.at[i][j] = _A.at[j][i];
+            }
+        }
+    }
+    return out;
+}
+
+double func_curvefit_line(double _x, double _a0, double _a1) {
+
+    return _a0 + _a1 * _x;
+}
+
+double func_interpolation_line(double _x, double _y1, double _y2, double _x1, double _x2) {
+
+	return _y1 * ((_x - _x2) / (_x1 - _x2)) + _y2 * ((_x - _x1) / (_x2 - _x1));
 }

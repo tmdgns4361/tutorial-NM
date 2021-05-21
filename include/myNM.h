@@ -1,9 +1,8 @@
 /*----------------------------------------------------------------\
 @ Numerical Methods by Young-Keun Kim - Handong Global University
 
-Author           : [YOUR NAME]
-Created          : 26-03-2018
-Modified         : 18-03-2021
+Author           : 21600336 ¹é½ÂÈÆ
+Modified         : 15-05-2021
 Language/ver     : C++ in MSVS2019
 
 Description      : myNM.h
@@ -13,17 +12,25 @@ Description      : myNM.h
 #define		_MY_NM_H
 
 #include "myMatrix.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
-// Matrix addition
-extern	Matrix	addMat(Matrix _A, Matrix _B);
 
-// Apply back-substitution
-extern	Matrix	backSub(Matrix _A, Matrix _b);
 
-// Return the dy/dx results for the input data. (truncation error: O(h^2))
-Matrix	gradient(Matrix _x, Matrix _y);
+//For differentiation
 
-// Return the dy/dx results for the target equation. (truncation error: O(h^2))
-Matrix	gradientFunc(double func(const double x), Matrix xin);
+double IntegrateRect(double _x[], double _y[], int _m);
+
+double trap(double _x[], double _y[], int _m);
+
+double integral(double func(const double x), double a, double b, int n);
+
+double myFunc(const double x);
+
+
+
+// Create a matrix from 1D-array
+Matrix	arr2Mat(double* _1Darray, int _rows, int _cols);
 
 #endif

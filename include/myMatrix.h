@@ -1,9 +1,8 @@
 /*----------------------------------------------------------------\
 @ Numerical Methods by Young-Keun Kim - Handong Global University
 
-Author           : [YOUR NAME]
-Created          : 26-03-2018
-Modified         : 18-03-2021
+Author           : 21600336 ¹é½ÂÈÆ
+Modified         : 15-05-2021
 Language/ver     : C++ in MSVS2019
 
 Description      : myMatrix.h
@@ -32,13 +31,10 @@ extern	void	freeMat(Matrix _A);
 // Create a matrix from a text file
 extern	Matrix	txt2Mat(std::string _filePath, std::string _fileName);
 
-//// Print matrix
+// Print matrix
 extern	void	printMat(Matrix _A, const char* _name);
 
-
-
-
-/// It is recommended to create the following functions.
+// It is recommended to create the following functions.
 
 // initialization of Matrix elements
 extern	void	initMat(Matrix _A, double _val);
@@ -56,10 +52,10 @@ extern	Matrix	eye(int _rows, int _cols);
 extern	Matrix	transpose(Matrix _A);
 
 // Copy matrix
-extern	Matrix	copyMat(Matrix _A);
+extern	void copyMat(Matrix _A, Matrix _B);
 
 // Copy matrix Elements from A to B
-extern	void	copyVal(Matrix _A, Matrix _B);
+extern	void copyVal(Matrix _A, Matrix _B);
 
 
 #endif
