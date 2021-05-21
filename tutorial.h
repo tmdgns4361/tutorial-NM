@@ -16,6 +16,8 @@ Description      : myNM.h
 #include <stdlib.h>
 #include <math.h>
 
+//new functionadd
+void gradient22(double xom[]);
 
 
 //For differentiation
